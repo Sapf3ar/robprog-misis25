@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  talker:
+    build:
+      context: ..
+      dockerfile: docker/example.Dockerfile
+    container_name: ros2_talker
+    network_mode: host
+    ipc: host
+    command: ros2 run my_ros2_package talker_node
+
+  listener:
+    build:
+      context: ..
+      dockerfile: docker/example.Dockerfile
+    container_name: ros2_listener
+    network_mode: host
+    ipc: host
+    command: ros2 run my_ros2_package listener_node
+    depends_on:
+      - talker
