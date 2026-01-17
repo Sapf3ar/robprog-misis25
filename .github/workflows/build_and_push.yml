@@ -44,7 +44,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./docker_build_hw
           file: ./docker_build_hw/docker/example.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
